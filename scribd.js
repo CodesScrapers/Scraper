@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-class ScribdScraper {
+class Scribd {
   constructor() {
     this.baseHeaders = {
       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -136,7 +136,6 @@ class ScribdScraper {
         }
       });
 
-      // DOWNLOAD INFO
       const downloadFormats = [];
       $('[data-e2e="download-format"], [class*="download"] [class*="format"], .download_option').each((i, el) => {
         const format = $(el).text().trim().match(/[A-Za-z0-9]+/)?.[0];
@@ -206,7 +205,7 @@ class ScribdScraper {
 }
 
 (async () => {
-  const scraper = new ScribdScraper();
+  const scraper = new Scribd();
   //console.log(JSON.stringify(await scraper.search('Penelitian'), null, 2));
   console.log(JSON.stringify(await scraper.getDocument('https://id.scribd.com/document/440087445/proposal-penelitian'), null, 2));
 })();
