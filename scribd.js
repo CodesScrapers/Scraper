@@ -93,7 +93,7 @@ class Scribd {
       
       const authorEl = $('[data-e2e="publish-info"] a, .publisher-info a, [class*="uploader"] a').first();
       const author = authorEl.text().trim() || $('meta[name="author"]').attr('content') || 'yoga';
-      const authorUrl = authorEl.attr('href') ? `https://id.scribd.com${authorEl.attr('href')}` : `https://id.scribd.com/user/293063045/${author}`;
+      const authorUrl = authorEl.attr('href') ? `https://id.scribd.com/${authorEl.attr('href')}` : `https://id.scribd.com/user/293063045/${author}`;
 
       const pageCount = $('[data-e2e="metadata-page-count-wide"]').text().match(/\d+/)?.[0] || 
                         $('[class*="pageCount"]').text().match(/\d+/)?.[0] || 
